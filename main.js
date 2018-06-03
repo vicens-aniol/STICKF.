@@ -1,4 +1,14 @@
-      // var charTimmy;
+var charStickMan;
+var stickManAnim = [
+  "resources/blue_stickman/1.png",
+  "resources/blue_stickman/2.png",
+  "resources/blue_stickman/3.png",
+]
+var stickManNum = 0;
+var stickManProperties = {
+  height: window.innerHeight*0.2,
+  width: window.innerHeight*0.2*124/367,
+};
 function inicialize() {
   canvas = document.getElementById('mainCanvas');
   ctx = canvas.getContext("2d");
@@ -9,25 +19,31 @@ function inicialize() {
   //canvas.style.background = "#2E86C1";
   loadImages();
   var initialLoop = setInterval(function() { principalInit();/*stop++;*/}, 1000/60);
-  }
+}
+
   function loadImages() {
-      // charTimmy = new Image();
-      // charTimmy.src = "resources/timmy_little.png";
+      charStickMan = new Image();
   }
 
 // Images Function Loadings
-        // function drawTimmy() {
-        //   ctx.drawImage(charTimmy, 100,100,150,97.8880675818);
-        // }
+    function drawStickMan() {
+      charStickMan.src = stickManAnim[stickManNum];
+      ctx.drawImage(charStickMan,canvas.width*0.5 - stickManProperties.width/2, canvas.height*0.5 - stickManProperties.height/2, stickManProperties.width, stickManProperties.height);
+    }
 // Loops
 function principalInit() {
 deleteCanvas();
-// drawTimmy();
+drawStickMan();
+stickManProperties = {
+  height: window.innerHeight*0.2,
+  width: window.innerHeight*0.2*124/367,
+}
 // start();
 }
 function deleteCanvas() {
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+// console.log(canvas.height);
 }
 function resizeCanvas() {
 canvas.width = window.innerWidth;
